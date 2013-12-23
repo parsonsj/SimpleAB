@@ -5,7 +5,7 @@ SimpleAB is a simple jQuery plugin designed for AB testing. It is incredibly lig
 ##Using SimpleAB
 
 ### Setting Up Your Copy Page
-SimpleAB is built around the idea that you will have several versions of the same page living within one page. SimpleAB works by setting ```display:none``` on all page versions except a randomly selected active one. Every page (pages may be broken up, i.e. you may have 5 DIVs that belong to each page) needs two additional classes to work with SimpleAB. The default class names are ```simpleab``` and ```simpleab-pagenumber```, but this is customizable, as you will see.
+SimpleAB is built around the idea that you will have several versions of the same page living within one page. SimpleAB works by setting ```display:none``` on all page versions except a randomly selected active one. Every page (pages may be broken up, i.e. you may have 5 DIVs that belong to each page) needs two additional classes to work with SimpleAB: a class indicating that the element is part of a SimpleAB page and a class indicating the page of which the element is a part. The default class names are ```simpleab``` and ```simpleab-pagenumber```, but this is customizable, as you will see.
 
 For example, you should add ```simpleab simpleab-2``` to all HTML associated solely with page 2. SimpleAB page indices are _one-based_.
 
@@ -49,8 +49,11 @@ $(document).ready(function(){
 ```
 
 The ```$.simpleAB``` method takes three parameters:
+
 1. ```classCount``` is an integer representing the number of pages that you set up in the document. This parameter is required, as simpleAB makes no attempt to count how many pages you have included. 
+
 2. ```persist``` is a boolean indicating whether or not the random SimpleAB page selection should be persisted to (or loaded from) a cookie. If true, each of your users will see the same page in the same browser every time he or she visits your site for up to 90 days. If false, your users will see a different page each time. Default: false.
+
 3. ```className``` is a string indicating what class name SimpleAB should use for selecting pages. For instance, if you set this 
 
 ##Testing SimpleAB
