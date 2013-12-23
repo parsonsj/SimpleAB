@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SimpleAB Test Page</title>
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="simpleab.js"></script>
+	<script>
+		$(document).ready(function(){
+			$.simpleAB(3, false);
+		});
+	</script>
+</head>
+<body>
+	<h1>SimpleAB Test Page</h1>
+	<p>
+		There are three DIVs in this paragraph, but only one will be showing. SimpleAB has picked one at random. Whoa, magic!
+		<div class="simpleab simpleab-1">
+			This is DIV #1.
+		</div>
+		<div class="simpleab simpleab-2">
+			This is DIV #2.
+		</div>
+		<div class="simpleab simpleab-3">
+			This is DIV #3.
+		</div>
+	</p>
+</body>
+</html>
