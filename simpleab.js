@@ -9,7 +9,7 @@
 	//   className: The name of the class that names SimpleAB pages. Default: "simpleab".
 	$.simpleAB = function(params){
 		// Load up the params
-		this.persist = false;
+		this.persist = true;
 		this.className = "simpleab";
 		$.extend(this, params);
 		
@@ -59,7 +59,7 @@
 		var selectedClass = this.className + "-" + selectedItem.toString();
 
 		// Hide all classes except the one we want to display
-		$("." + this.className).each(function(){
+		$("[class^=\"" + this.className + "-\"]").each(function(){
 			if(!$(this).hasClass(selectedClass)){
 				$(this).css("display", "none");
 			}
