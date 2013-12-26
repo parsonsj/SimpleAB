@@ -4,14 +4,12 @@ SimpleAB is an ultra-lightweight jQuery plugin designed to enable AB testing of 
 
 ##Using SimpleAB
 
-### Setting Up Your Copy Page
-SimpleAB is built around the idea that you will have several copy variations living within one document. It works by randomly swapping in and out associated HTML elements. Only one group of associated HTML elements is displayed at once; all of the rest are hidden.
+###Setting Up Your Copy Page
+SimpleAB is built around the idea that you will have several copy variations living within one document. It works by randomly swapping in and out associated HTML elements. Only one group of associated HTML elements is displayed at once; all of the rest are hidden with ```display:none```.
 
-You can associated HTML elements by giving them the same class in the following syntax:
+You can associate HTML elements by giving them the same SimpleAB class. SimpleAB classes are named in a ```classname-groupnumber``` format.
 
-```classname-group_number```
-
-The default class name is "simpleab." (There is no period or quotes!) You may have as many groups as you want, but only one group is shown at once. You should separate your copy variations by assigning each a different group number.
+The default class name is ```simpleab```. You may have as many groups as you want, but only one group is shown at once. You should separate your copy variations by assigning each a different group number.
 
 Here is an example copy page so that you can see this in action:
 ```
@@ -32,7 +30,7 @@ Here is an example copy page so that you can see this in action:
 
 The above page will display only one of the three DIVs with a ```simpleab-number``` class on it.
 
-###Making the JavaScript Work
+### Making the JavaScript Work
 
 First, you should include jQuery in your HTML page _before_ you include SimpleAB, then include simpleab.js.
 ```
@@ -47,8 +45,7 @@ $(document).ready(function(){
 	$.simpleAB({
 		classCount: integer,
 		persist: boolean,
-		className: string,
-		disableFlip: boolean
+		className: string
 	});
 });
 ```
@@ -68,7 +65,7 @@ SimpleAB makes it easy to test your copy variations' appearances, even with ```p
 
 For example, if your SimpleAB page were at ```http://www.example.com/example1.html```, then the flip URL would be ```http://www.example.com/example1.html?flip=true```.
 
-###Stopping Hidden Elements From Being Shown on Load
+##Stopping Hidden Elements From Being Shown on Load
 
 You should set ```display:none``` via inline CSS (or via CSS class) on all of the elements that will be switched in and out by SimpleAB. Otherwise, all of your copy may flash in front of users as your page loads. SimpleAB will remove this ```display:none``` on the group of elements that are displayed.
 
