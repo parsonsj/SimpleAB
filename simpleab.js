@@ -59,7 +59,7 @@
 		var selectedClass = this.className + "-" + selectedItem.toString();
 
 		// Hide all classes except the one we want to display
-		$("[class^=\"" + this.className + "-\"]").each(function(){
+		$("[class*=\"" + this.className + "-\"]").each(function(){
 			if(!$(this).hasClass(selectedClass)){
 				$(this).css("display", "none");
 			}
