@@ -7,11 +7,9 @@ SimpleAB is an ultra-lightweight jQuery plugin designed to enable AB testing of 
 ### Setting Up Your Copy Page
 SimpleAB is built around the idea that you will have several copy variations living within one document. It works by randomly swapping in and out associated HTML elements. Only one group of associated HTML elements is displayed at once; all of the rest are hidden with ```display:none```.
 
-You can associated HTML elements by giving them the same class in the following syntax:
+You can associate HTML elements by giving them the same SimpleAB class. SimpleAB classes are named in a ```classname-groupnumber``` format.
 
-```classname-group_number```
-
-"simpleab" is used as the default class name. You may have as many groups as you want, but only one group is shown at once. You should separate your copy variations by assigning each a different group number.
+The default class name is ```simpleab```. You may have as many groups as you want, but only one group is shown at once. You should separate your copy variations by assigning each a different group number.
 
 Here is an example copy page so that you can see this in action:
 ```
