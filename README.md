@@ -5,13 +5,13 @@ SimpleAB is an ultra-lightweight jQuery plugin designed to enable AB testing of 
 ##Using SimpleAB
 
 ### Setting Up Your Copy Page
-SimpleAB is built around the idea that you will have several copy variations living within one document. It works by randomly swapping in and out associated HTML elements. Only one group of associated HTML elements is displayed at once; all of the rest are hidden with ```display:none```.
+SimpleAB is built around the idea that you will have several copy variations living within one document. It works by randomly swapping in and out associated HTML elements. Only one group of associated HTML elements is displayed at once; all of the rest are hidden.
 
 You can associated HTML elements by giving them the same class in the following syntax:
 
 ```classname-group_number```
 
-"simpleab" is used as the default class name. You may have as many groups as you want, but only one group is shown at once. You should separate your copy variations by assigning each a different group number.
+The default class name is "simpleab." (There is no period or quotes!) You may have as many groups as you want, but only one group is shown at once. You should separate your copy variations by assigning each a different group number.
 
 Here is an example copy page so that you can see this in action:
 ```
@@ -32,7 +32,7 @@ Here is an example copy page so that you can see this in action:
 
 The above page will display only one of the three DIVs with a ```simpleab-number``` class on it.
 
-### Making the JavaScript Work
+###Making the JavaScript Work
 
 First, you should include jQuery in your HTML page _before_ you include SimpleAB, then include simpleab.js.
 ```
@@ -47,7 +47,8 @@ $(document).ready(function(){
 	$.simpleAB({
 		classCount: integer,
 		persist: boolean,
-		className: string
+		className: string,
+		disableFlip: boolean
 	});
 });
 ```
@@ -60,10 +61,23 @@ The ```$.simpleAB``` method takes three parameters:
 
 3. _(Optional)_ ```className``` is the first part of the SimpleAB group class name. Though "simpleab" makes the most sense to use, if you already have a "simpleab-" class, you can change it to something more convenient. Default: "simpleab"
 
-##Testing SimpleAB
+4. _(Optional)_ ```disableFlip``` is a boolean indicating whether or not SimpleAB should ignore ```flip=true```. This is recommended in production code, as ```flip=true``` (which will be discussed in the next section) allows your users to see every copy variation you have put into your page. Default: false
+
+##Testing SimpleAB with ```flip=true```
 SimpleAB makes it easy to test your copy variations' appearances, even with ```persist``` set to true. Simply include ```flip=true``` in your page's querystring, and SimpleAB will automatically increment your persisted copy version number by one (and save the new value). This makes it easy to iterate through all of your copy versions.
 
 For example, if your SimpleAB page were at ```http://www.example.com/example1.html```, then the flip URL would be ```http://www.example.com/example1.html?flip=true```.
 
+###Stopping Hidden Elements From Being Shown on Load
+
+You should set ```display:none``` via inline CSS (or via CSS class) on all of the elements that will be switched in and out by SimpleAB. Otherwise, all of your copy may flash in front of users as your page loads. SimpleAB will remove this ```display:none``` on the group of elements that are displayed.
+
 ##Issues
+
+###Overzealous Hiding
+
 SimpleAB will hide any elements whose classes contain ```classname-``` (where classname is the SimpleAB group association class prefix)--even if they are not associated with SimpleAB. You should fix this by changing the className initialization parameter and altering your group association classes accordingly.
+
+###Users Without JavaScript Enabled
+
+Obviously, SimpleAB will not work for users who do not have JavaScript enabled. You may wish to add a duplicate version of one of your SimpleAB groups to ```<noscript>``` elements so that these users will still be able to purchase your product.
